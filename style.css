@@ -1,0 +1,68 @@
+*{
+    font-family: Roboto, "Trebuchet MS", sans-serif;
+}
+
+body{
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content: center;
+}
+
+.calculator{
+    margin:25px;
+    width:500px;
+    height:700px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: blue;
+}
+
+.screen{
+    width:90%;
+    height:10%;
+    background-color: aqua;
+}
+
+.keyboard{
+    width:85%;
+    height:80%;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.numbers{
+    width:100%;
+    height:80%;
+    display:flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap:4%;
+    padding:10px;
+}
+
+.numbers > .key{
+    width:23%;
+    aspect-ratio: 1/1;
+    flex: 0 0 auto;
+}
+
+.operators{
+    width:100%;
+    height:20%;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.operators > .key{
+    width:18%;
+    aspect-ratio:1/1;
+    flex: 0 0 auto;
+}
+/*JAK DO TEGO WROCE TO MAM ZROBIC GRIDEM ROZMIEJSCOWIENIE NA KLAWIE*/
