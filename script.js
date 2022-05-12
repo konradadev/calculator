@@ -27,3 +27,16 @@ function operate(operator, a, b){
     }
     return result;
 }
+
+const numberKeys = document.querySelectorAll(".numberkey")
+
+numberKeys.forEach((button) => {
+    button.addEventListener("click", () =>{
+        const screen = document.querySelector(".screen");
+        if(screen.innerText.length >= 13){
+            alert("A maximum of 13 digits can be displayed");
+            return;
+        }
+        screen.innerText+=button.innerText;
+    })
+})
