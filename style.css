@@ -17,22 +17,31 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    background-color: blue;
+    background-color: #1E1E24;
+    border-radius:8px;
 }
 
 .screen{
-    width:90%;
-    height:10%;
-    background-color: aqua;
+    width:85%;
+    height:12%;
+    background-color: #F7EBE8;
+    text-align: right;
+    padding: 5px;
+    margin-top:20px;
+    margin-bottom:15px;
+    font-size: 3.5em;
+    border-radius: 2px;
 }
 
 .keyboard{
     width:85%;
     height:80%;
-    background-color: aquamarine;
+    background-color: #444140;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 15px;
+    border-radius:4px;
 }
 
 .numbers{
@@ -64,4 +73,26 @@ body{
     width:18%;
     aspect-ratio:1/1;
     flex: 0 0 auto;
+}
+
+.key{
+    background-color: #FFA987;
+    border-radius: 10px;
+    border-width: 8px;
+    border-style: ridge;
+    font-size: 2em;
+    font-weight: 900;
+    color:#1E1E24;
+}
+
+.key:hover{
+    border-style: groove;
+}
+
+.clearkey{
+    background-color: #E54B4B;
+}
+
+.operatorkey{
+    background-color: #FF8A5C;
 }
