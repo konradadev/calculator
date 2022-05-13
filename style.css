@@ -99,6 +99,6 @@ body{
     background-color: rgb(255, 153, 0);
 }
 
-.plusminuskey{
+.plusminuskey, .decimalkey{
     background-color: #FF8A5C;
 }
