@@ -12,7 +12,7 @@ body{
 .calculator{
     margin:25px;
     width:500px;
-    height:700px;
+    height:900px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -64,14 +64,15 @@ body{
 
 .operators{
     width:100%;
-    height:20%;
-    display:flex;
-    align-items: center;
-    justify-content: space-around;
+    height:30%;
+    display:grid;
+    justify-content: center;
+    justify-items: center;
+    grid-template-columns:30% 30% 30%;
 }
 
 .operators > .key{
-    width:18%;
+    width:70%;
     aspect-ratio:1/1;
     flex: 0 0 auto;
 }
@@ -95,5 +96,9 @@ body{
 }
 
 .operatorkey{
+    background-color: rgb(255, 153, 0);
+}
+
+.plusminuskey{
     background-color: #FF8A5C;
 }
