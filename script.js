@@ -48,3 +48,10 @@ numberKeys.forEach((button) => {
     })
 })
 
+const clearKey = document.querySelector(".clearkey")
+
+clearKey.addEventListener("click", () => {
+    screenContent="";
+    displayScreenContent(screenContent);
+    console.log(screenContent)
+})
