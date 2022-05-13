@@ -28,19 +28,23 @@ function operate(operator, a, b){
     return result;
 }
 
+function displayScreenContent(content){
+    const screen = document.querySelector(".screen");
+    screen.innerText=content;
+}
+
 let screenContent = "";
 
 const numberKeys = document.querySelectorAll(".numberkey")
 
 numberKeys.forEach((button) => {
     button.addEventListener("click", () => {
-        const screen = document.querySelector(".screen");
-        if(screen.innerText.length >= 13){
+        if(screenContent.length >= 13){
             alert("A maximum of 13 digits can be displayed");
             return;
         }
         screenContent+=button.innerText;
-        screen.innerText=screenContent;
+        displayScreenContent(screenContent);
     })
 })
 
