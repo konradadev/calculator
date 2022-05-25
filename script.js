@@ -40,55 +40,69 @@ function displayScreenContent(content){
     screen.innerText=content;
 }
 
+function showNumbers(button){
+    if(screenContent.length >= 13){
+        alert("A maximum of 13 characters can be displayed");
+        return;
+    }
+    screenContent+=button.innerText;
+    if (saveRight){
+        rightNumber = screenContent;
+    }
+    displayScreenContent(screenContent);
+}
 
 const numberKeys = document.querySelectorAll(".numberkey")
 
 numberKeys.forEach((button) => {
     button.addEventListener("click", () => {
-        if(screenContent.length >= 13){
-            alert("A maximum of 13 digits can be displayed");
-            return;
-        }
-        screenContent+=button.innerText;
-        if (saveRight){
-            rightNumber = screenContent;
-        }
-        displayScreenContent(screenContent);
+        showNumbers(button);
     })
 })
 
-const clearKey = document.querySelector(".clearkey")
-
-clearKey.addEventListener("click", () => {
+function clearCalculator(){
     screenContent="";
     leftNumber=null;
     rightNumber=null;
     saveRight=false;
     displayScreenContent(screenContent);
-    console.log(screenContent)
-})
+}
+
+const clearKey = document.querySelector(".clearkey")
+
+clearKey.addEventListener("click", clearCalculator);
+
+function saveLeftNumber(button){
+    leftNumber=screenContent;
+    saveRight=true;
+    screenContent="";
+    lastOperation=button.innerText;
+}
+
+function operateEarly(button){
+    rightNumber=screenContent;
+    resultFinal=operate(lastOperation, Number(leftNumber),
+    Number(rightNumber));
+    lastOperation=button.innerText;
+}
+
+function updateNumbers(){
+    screenContent="";
+    rightNumber=null;
+    leftNumber=resultFinal;
+}
 
 const operatorKeys = document.querySelectorAll(".operatorkey")
-console.log(operatorKeys)
 
 operatorKeys.forEach((button) => {
     button.addEventListener("click", () => {
         if(leftNumber===null){
-            leftNumber=screenContent;
-            saveRight=true;
-            screenContent="";
-            lastOperation=button.innerText;
+            saveLeftNumber(button);
         }else if(rightNumber!==null){
-            rightNumber=screenContent;
-            resultFinal=operate(lastOperation, Number(leftNumber),
-            Number(rightNumber));
-            lastOperation=button.innerText;
-            console.log(resultFinal);
+            operateEarly(button);
             screenContent=resultFinal;
             displayScreenContent(screenContent);
-            screenContent="";
-            rightNumber=null;
-            leftNumber=resultFinal;
+            updateNumbers();
         }
     })
 })
@@ -99,10 +113,9 @@ equalsKey.addEventListener("click", () => {
     if(rightNumber===null){
         return;
     }
-    resultFinal=operate(lastOperation, Number(leftNumber), Number(rightNumber));
+    resultFinal=operate(lastOperation, Number(leftNumber),
+    Number(rightNumber));
     displayScreenContent(resultFinal);
-    leftNumber=resultFinal;
-    rightNumber=null;
-    screenContent="";
+    updateNumbers();
     resultFinal=null;
 })
