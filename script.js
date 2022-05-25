@@ -1,4 +1,11 @@
 //JS
+let screenContent = "";
+let leftNumber = null;
+let rightNumber = null;
+let saveRight = false;
+let lastOperation = null;
+let resultFinal = null;
+
 const add = (addendA, addendB) => addendA+addendB;
   
 const subtract = (minuend, subtrahend) => minuend-subtrahend;
@@ -33,7 +40,6 @@ function displayScreenContent(content){
     screen.innerText=content;
 }
 
-let screenContent = "";
 
 const numberKeys = document.querySelectorAll(".numberkey")
 
@@ -44,6 +50,9 @@ numberKeys.forEach((button) => {
             return;
         }
         screenContent+=button.innerText;
+        if (saveRight){
+            rightNumber = screenContent;
+        }
         displayScreenContent(screenContent);
     })
 })
@@ -52,6 +61,48 @@ const clearKey = document.querySelector(".clearkey")
 
 clearKey.addEventListener("click", () => {
     screenContent="";
+    leftNumber=null;
+    rightNumber=null;
+    saveRight=false;
     displayScreenContent(screenContent);
     console.log(screenContent)
+})
+
+const operatorKeys = document.querySelectorAll(".operatorkey")
+console.log(operatorKeys)
+
+operatorKeys.forEach((button) => {
+    button.addEventListener("click", () => {
+        if(leftNumber===null){
+            leftNumber=screenContent;
+            saveRight=true;
+            screenContent="";
+            lastOperation=button.innerText;
+        }else if(rightNumber!==null){
+            rightNumber=screenContent;
+            resultFinal=operate(lastOperation, Number(leftNumber),
+            Number(rightNumber));
+            lastOperation=button.innerText;
+            console.log(resultFinal);
+            screenContent=resultFinal;
+            displayScreenContent(screenContent);
+            screenContent="";
+            rightNumber=null;
+            leftNumber=resultFinal;
+        }
+    })
+})
+
+const equalsKey = document.querySelector(".equalskey")
+
+equalsKey.addEventListener("click", () => {
+    if(rightNumber===null){
+        return;
+    }
+    resultFinal=operate(lastOperation, Number(leftNumber), Number(rightNumber));
+    displayScreenContent(resultFinal);
+    leftNumber=resultFinal;
+    rightNumber=null;
+    screenContent="";
+    resultFinal=null;
 })
