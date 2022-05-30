@@ -117,6 +117,16 @@ operatorKeys.forEach((button) => {
     })
 })
 
+const decimalKey = document.querySelector(".decimalkey")
+
+decimalKey.addEventListener("click", () => {
+    const currentScreen = screenContent.toString();
+    if(currentScreen.indexOf(".")===-1){
+        screenContent += ".";
+        displayScreenContent(screenContent);
+    }
+})
+
 const equalsKey = document.querySelector(".equalskey")
 
 equalsKey.addEventListener("click", () => {
