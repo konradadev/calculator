@@ -107,7 +107,7 @@ operatorKeys.forEach((button) => {
         if(leftNumber===null){
             saveLeftNumber(button);
         }else if(rightNumber!==null){
-            if(rightNumber===0 && lastOperation==="/"){
+            if(rightNumber==0 && lastOperation==="/"){
             alert("no");
             return;
             }
@@ -144,7 +144,7 @@ equalsKey.addEventListener("click", () => {
     if(rightNumber===null){
         return;
     }
-    if(rightNumber===0 && lastOperation==="/"){
+    if(rightNumber==0 && lastOperation==="/"){
         alert("no");
         return;
     }
