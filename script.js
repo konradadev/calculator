@@ -127,6 +127,13 @@ decimalKey.addEventListener("click", () => {
     }
 })
 
+const plusMinusKey = document.querySelector(".plusminuskey")
+
+plusMinusKey.addEventListener("click", () => {
+    screenContent *= -1;
+    displayScreenContent(screenContent);
+})
+
 const equalsKey = document.querySelector(".equalskey")
 
 equalsKey.addEventListener("click", () => {
