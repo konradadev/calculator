@@ -36,6 +36,14 @@ function operate(operator, a, b){
 }
 
 function displayScreenContent(content){
+    if(content.toString().length > 13){
+        alert("Number too big. Truncating to 13 characters...");
+        const tooBigNumber = content.toString().split("");
+        while(tooBigNumber.length > 13){
+            tooBigNumber.pop();
+        }
+        content = tooBigNumber.join("");
+    }
     const screen = document.querySelector(".screen");
     screen.innerText=content;
 }
