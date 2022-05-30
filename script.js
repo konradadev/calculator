@@ -111,6 +111,8 @@ operatorKeys.forEach((button) => {
             screenContent=resultFinal;
             displayScreenContent(screenContent);
             updateNumbers();
+        }else{
+            lastOperation=button.innerText;
         }
     })
 })
