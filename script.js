@@ -107,6 +107,10 @@ operatorKeys.forEach((button) => {
         if(leftNumber===null){
             saveLeftNumber(button);
         }else if(rightNumber!==null){
+            if(rightNumber===0 && lastOperation==="/"){
+            alert("no");
+            return;
+            }
             operateEarly(button);
             screenContent=resultFinal;
             displayScreenContent(screenContent);
@@ -138,6 +142,10 @@ const equalsKey = document.querySelector(".equalskey")
 
 equalsKey.addEventListener("click", () => {
     if(rightNumber===null){
+        return;
+    }
+    if(rightNumber===0 && lastOperation==="/"){
+        alert("no");
         return;
     }
     resultFinal=operate(lastOperation, Number(leftNumber),
